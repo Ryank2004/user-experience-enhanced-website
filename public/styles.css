@@ -1,0 +1,373 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+
+  :root {
+    --achtergrondKleur: #A1D6E2;
+    --secundaireAchtergrondKleur: #F1F1F2;
+    --tekstAchtergrondKleur: #1995AD;
+    --tekstKleur: #212121;
+    --mainFont: "Roboto", sans-serif;
+    --secondFont: "Roboto slab", sans-serif;
+    --secundaireTekstKleur: white;
+  }
+
+body {
+    background-color: var(--achtergrondKleur);
+    margin: auto;
+    transition: transform .5s;
+    
+}
+
+body.slide-right {
+    transform: translateX(30vw);
+    overflow: hidden;
+}
+
+/* globale styling met breakpoints */
+
+ul li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    font-family:  var(--mainFont);
+    color: var(--tekstKleur);
+}
+
+.text {
+    font-family: var(--secondFont);
+    font-weight: 300;
+    font-size: 1.1em;
+    padding-top: .5em;
+    color: var(--tekstKleur);
+}
+
+.h1 {
+    font-family: var(--mainFont);
+    font-weight: 600;
+    font-size: 2.5em;
+    color: var(--tekstKleur);
+}
+
+.h2 {
+    font-family: var(--mainFont);
+    color: var(--tekstKleur);
+    font-weight: 600;
+    font-size: 1.5em;
+}
+
+.h3 {
+    font-family: var(--mainFont);
+    color: var(--tekstKleur);
+    font-size: 1em;
+}
+
+@media screen and (min-width: 900px) {
+
+    .h1 {
+        font-weight: 800;
+        font-size: 3.5em;
+    }
+
+    .h2 {
+        font-size: 2em;
+    }
+
+    .text {
+        font-size: 1.4em;
+    }
+}
+@media screen and (min-width: 1300px) {
+
+    .h1 {
+        font-weight: 800;
+        font-size: 4.5em;
+    }
+
+    .h2 {
+        font-size: 2.4em;
+    }
+
+    .text {
+        font: 1.8em;
+    }
+}
+
+.active-state {
+    background-color: #1995AD;
+    color: white;
+}
+
+/* classes voor de scroll animatie */
+/* .reveal {
+    position: relative;
+    transform: translateY(150px);
+    opacity: 0;
+    transition: 1s all ease;
+}
+
+.active {
+    transform: translateY(0);
+    opacity: 1;
+} */
+
+.navigatiebalk {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    padding: 1.5em 2em .5em 2.3em;
+    background-color: var(--secundaireAchtergrondKleur);
+    justify-content: space-between;
+}
+
+@media  screen and (min-width: 1300px) {
+   
+    .navigatiebalk {
+    padding: 2em 4em 1em 4.3em;
+    }
+}
+
+.menu-lijst {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    margin-left: auto;
+    
+}
+
+.lijst-item {
+    display: block;
+    margin-right: .85em;
+    padding: .5em 1em;
+    border-radius: .9em;
+    font-weight: 500;
+    font-size: .9em;
+}
+
+.lijst-button {
+    display: inline-block;
+    font-weight: 500;
+    font-size: 1em;
+    color: var(--tekstAchtergrondKleur);
+    border: 4px solid var(--tekstAchtergrondKleur);
+    background-color: var(--secundaireAchtergrondKleur);
+    padding: .35em .8em;
+    border-radius: .9em;
+    transition: background-color 0.3s ease-out, color 0.3s ease-out;
+}
+
+/* NAVBAR BREAKPOINTS */
+@media  screen and (min-width: 930px) {
+    
+    .lijst-item {
+        font-size: 1em;
+        margin-right: 1em;
+    }
+
+    .lijst-button {
+        font-size: 1.2em;
+        padding: .4em 1em;
+    }
+}
+
+@media  screen and (min-width: 1140px) {
+    
+    .lijst-item {
+        font-size: 1.2em;
+        margin-right: 1.1em;
+    }
+
+    .lijst-button {
+        font-size: 1.35em;
+        padding: .5em 1.1em;
+    }
+}
+
+@media  screen and (min-width: 1400px) {
+    
+    .lijst-item {
+        font-size: 1.5em;
+        margin-right: 1.2em;
+    }
+
+    .lijst-button {
+        font-size: 1.5em;
+        padding: .6em 1.2em;
+    }
+}
+
+.lijst-button:hover{
+    background-color: #1995AD;
+    color: white;
+}
+
+.hamburger {
+    display: none;
+}
+
+/* MENU VOOR MOBIEL */
+@media screen and (max-width: 780px) {
+   
+    .menu-lijst {
+        display: flex;
+        flex-direction: column;
+        float: left;
+        align-items: center;
+        transform: translateX(-30vw);
+        position: fixed;
+        top: 0;
+        left: 0;
+        background: var(--secundaireAchtergrondKleur);
+        width: 30vw;
+        height: 100vh;
+        padding: 1.2em .6em;
+    }
+
+    .lijst-item {
+        display: flex;
+        color: var(--tekstKleur);
+        font-size: 1em;
+        padding: .7em 1.5em;
+        margin-bottom: 1em;
+        border-radius: .9em;
+        font-weight: 500;
+        font-size: 1em;
+    }
+
+    .lijst-button {
+        display: none;
+    }
+
+    .hamburger {
+        display: block;
+        cursor: pointer;
+        padding-right: .2em;
+        transition: transform .5s;
+    }
+
+    .bar {
+        display: block;
+        width: 35px;
+        height: 4.2px;
+        margin: 7px auto;
+        -webkit-transition: all 0.3s ease;
+        transition: all 0.3s ease;
+        background-color: var(--tekstKleur);
+    }
+
+    .hamburger.active {
+        transform: translateX(-24vw);
+    }
+    @media screen and (min-width: 500px) {
+        
+        .hamburger.active {
+            transform: translateX(-30vw);
+        } 
+    }
+
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(10.7px) rotate(45deg);
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-10.7px) rotate(-45deg);
+    }
+}
+
+.header-wave {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.header-wave svg {
+    position: relative;
+    display: block;
+    width: calc(140% + 1.3px);
+    height: 145px;
+    z-index: -1;
+}
+
+.header-wave .shape-fill {
+    fill: var(--secundaireAchtergrondKleur);
+}
+
+.slogan {
+    padding: 2em 2em;
+}
+
+@media screen and (min-width: 900px) {
+
+    .slogan {
+        padding: 3em 4em;
+    }
+}
+
+.buurtcampus-informatie-wave {
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    z-index: -1;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.buurtcampus-informatie-wave svg {
+    position: relative;
+    display: block;
+    width: calc(132% + 1.3px);
+    height: 130px;
+    transform: rotateY(180deg);
+}
+
+.buurtcampus-informatie-wave .shape-fill {
+    fill: var(--tekstAchtergrondKleur);
+}
+
+.buurtcampus-informatie-container {
+    background-color: var(--tekstAchtergrondKleur);
+}
+.buurtcampus-informatie {
+    flex-direction: row-reverse;
+    align-items: center;
+    box-shadow: none;
+    padding: 2em 2em;
+    /* margin: 1.5em 0 2em 0; */
+}
+
+.info-image {
+    border-radius: 1em;
+    height: auto;
+    width: 80vw;
+    max-width: 500px;
+    margin-right: auto;
+}
+
+.info-text-container {
+    background-color: var(--achtergrondKleur);
+    border-radius: 1em;
+    max-width: 500px;
+}
+
+.info-titel {
+    /* display: inline-block; */
+    font-weight: 500;
+    font-size: 1.8em;
+    padding: .9em .7em 0 2rem;
+}
+
+.buurtcampus-informatie .lijst-button {
+    margin: 0 0 1em 1.2em;
+}
