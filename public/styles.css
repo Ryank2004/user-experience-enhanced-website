@@ -155,10 +155,10 @@ a {
     font-weight: 500;
     font-size: 1em;
     color: var(--tekstAchtergrondKleur);
-    border: 4px solid var(--tekstAchtergrondKleur);
+    border: 2px solid var(--tekstAchtergrondKleur);
     background-color: var(--secundaireAchtergrondKleur);
     padding: .35em .8em;
-    border-radius: .9em;
+    border-radius: .6em;
     transition: background-color 0.3s ease-out, color 0.3s ease-out;
 }
 
@@ -308,6 +308,11 @@ a {
     padding: 2em 2em;
 }
 
+.slogan a {
+    display: inline-block;
+    margin-top: 1em;
+}
+
 @media screen and (min-width: 900px) {
 
     .slogan {
@@ -337,37 +342,227 @@ a {
 }
 
 .buurtcampus-informatie-container {
+    display: flex;
+    flex-wrap: wrap;
     background-color: var(--tekstAchtergrondKleur);
+    justify-content: center;
 }
+
 .buurtcampus-informatie {
     flex-direction: row-reverse;
     align-items: center;
     box-shadow: none;
     padding: 2em 2em;
-    /* margin: 1.5em 0 2em 0; */
+    max-width: 500px;
+}
+
+@media screen and (min-width: 780px) {
+
+    .buurtcampus-informatie {
+        max-width: 350px;
+    }
+}
+
+@media screen and (min-width: 920px) {
+
+    .buurtcampus-informatie {
+        max-width: 420px;
+    }
+}
+
+.info-container {
+    background-color: var(--achtergrondKleur);
+    border-radius: 1em;
+    
 }
 
 .info-image {
-    border-radius: 1em;
+    border-radius: 1em 1em 0 0;
+    width: 100%;
     height: auto;
-    width: 80vw;
-    max-width: 500px;
     margin-right: auto;
 }
 
-.info-text-container {
-    background-color: var(--achtergrondKleur);
-    border-radius: 1em;
-    max-width: 500px;
-}
-
-.info-titel {
-    /* display: inline-block; */
-    font-weight: 500;
-    font-size: 1.8em;
+.buurtcampus-informatie h2, .buurtcampus-informatie p {
     padding: .9em .7em 0 2rem;
 }
 
-.buurtcampus-informatie .lijst-button {
-    margin: 0 0 1em 1.2em;
+.buurtcampus-informatie a {
+    display: inline-block;
+    margin: .9em .7em .9em 1.9rem;
 }
+
+/* .initiatieven {
+    margin-top: 1.5em;
+    position: relative;
+} */
+
+.initiatief-wave-top {
+    /* position: absolute; */
+    left: 0;
+    transform: rotate(180deg);
+    width: 100%;
+    overflow: hidden;
+    z-index: -1;
+    line-height: 0;
+}
+
+.initiatief-wave-top svg {
+    position: relative;
+    display: block;
+    width: calc(132% + 1.3px);
+    height: 154px;
+}
+
+.initiatief-wave-top .shape-fill {
+    fill: #1995AD;
+}
+
+.initiatief-kaartlijst {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: .5em 2em;
+    justify-content: center;
+    padding: 2em 2em;
+    background-color: #1995AD;
+    
+}
+
+@media screen and (min-width: 740px) {
+
+    .initiatief-kaartlijst {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: .5em 2em;
+        justify-content: center;
+    }
+
+    .initiatief-kaart {
+        width: 320px;
+    }
+
+    .initiatief-image-container {
+        height: 320px;
+    }
+}
+
+.initiatief-kaart {
+   display: flex;
+   position: relative;
+   flex-direction: column;
+   background-color: var(--secundaireAchtergrondKleur);
+   margin-bottom: 1.3em;
+   border-radius: 1em;
+   width: 280px;
+   
+}
+
+.initiatief-image-container {
+    display: flex;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 1rem 1rem 0 0;
+}
+
+.initiatief-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.kaart-content {
+    color: var(--tekstKleur);
+    padding: 1em 1em 2em 1em;
+    
+}
+
+.kaart-content h3 {
+    color: var(--tekstKleur);
+    margin-bottom: .8rem;
+    letter-spacing: .03em;
+}
+
+.kaart-content p {
+    font-size: 1em;
+    margin-top: .4rem;
+    letter-spacing: .03em;
+}
+
+.lees-meer {
+    background-color: var(--tekstAchtergrondKleur);
+    color: white;
+    margin-top: auto;
+    margin-left: auto;
+    margin-right: 1em;
+    margin-bottom: 1em;
+    padding: .3em .6em;
+    border-radius: .4rem;
+}
+
+.footer {
+    margin-top: 7em;
+    height: 100px;
+}
+
+.footer-wave {
+    /* position: absolute; */
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    z-index: -1;
+    line-height: 0;
+}
+
+.footer-wave svg {
+    position: relative;
+    display: block;
+    width: calc(132% + 1.3px);
+    height: 154px;
+}
+
+.footer-wave .shape-fill {
+    fill: #1995AD;
+}
+
+.heart-checkbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    background-color: var(--secundaireAchtergrondKleur);
+    border-radius: 8px;
+    box-shadow: 1px 4px 4px 2px rgba(0, 0, 0, 0.352), 0 2px 4px -2px rgba(0, 0, 0, 0.296);
+    bottom: 14px;
+    left: 14px;
+    padding: 0 10px 0 6px;
+  }
+  
+  .heart-checkbox span {
+    color: gray;
+    font-size: 24px;
+  }
+  
+  .heart-checkbox input {
+    opacity: 0;
+    cursor: pointer;
+    display: none;
+  }
+  
+  .heart-checkbox .fa-heart {
+    font-size: 22px;
+    height: 40px;
+    width: 40px;
+    color: #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--secundaireAchtergrondKleur);
+    border-radius: 8px;
+  }
+  
+  .heart-checkbox input:checked + i.fa-heart {
+    color: red;
+  }
+  

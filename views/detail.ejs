@@ -1,3 +1,14 @@
 <%- include('./partials/head') %>
 
+ <main>
+    <section class="initiatief-detail">
+        <img class="initiatief-detail-image" src="https://fdnd-agency.directus.app/assets/<%= initiatief.image %>">
+        <h2 class="h2"> <%= initiatief.title %> </h2>
+        <p class="text"><%= initiatief.categories %>
+            <%- initiatief.long_description %></p>
+        <a  href="/aanmelden" class="lijst-button"><span>Aanmelden</span></a><a class="like"></a>
+    </section>
+    
+ </main>   
+
 <%- include('./partials/foot') %>
