@@ -526,6 +526,7 @@ a {
     fill: #1995AD;
 }
 
+/* Styling voor de like knop */
 .heart-checkbox {
     display: flex;
     justify-content: center;

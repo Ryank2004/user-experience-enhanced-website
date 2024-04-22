@@ -13,13 +13,16 @@ app.set('views', './views')
 app.use(express.static('public'))
 app.use(express.urlencoded({extended: true}))
 
+// let initiatievenData = await fetchData();
+
+
 // const fetchFromApi = async (endpoint) => {
 //     const response = await fetchJson(apiUrl + endpoint);
 //     return response.data;
 //   };
 
 // const fetchData = async () => {
-//     const allDataAdvertisements = await fetchFromApi("/items/dh_services");
+ //     const allDataAdvertisements = await fetchFromApi("/items/dh_services");
 //     return allDataAdvertisements;
 //   };
 
@@ -55,7 +58,6 @@ app.get('/initiatieven', function (request, response){
   
 })
 
-
 app.get('/detail/:id', function (request, response){
   fetchJson(apiUrl + '/' + request.params.id).then((initiatiefDetail) => {
 
@@ -65,45 +67,42 @@ app.get('/detail/:id', function (request, response){
 
 app.get('/aanmelden', function (request, response){
   fetchJson(apiUrl).then((initiatievenData) => {
-
     response.render('aanmelden', {initiatief: initiatievenData.data})
   })
 })
 
-// // POST-route voor het liken van een service
-// app.post("/like", async function (request, response) {
-//     const { like_id } = request.body;
-//     console.log("Like verzoek voor service met ID:", like_id);
-//     const initiatief = initiatievenData.find(
-//       (initiatief) => initiatief.id === parseInt(like_id)
-//     );
-//     if (initiatief) {
-//       // Up het aantal likes voor de service
-//       initiatief.likes = (initiatief.likes || 0) + 1;
-//       // Update het aantal likes in de Directus API
-//       try {
-//         await fetchJson(apiUrl + `/items/dh_services/${like_id}`, {
-//           method: "PATCH",
-//           headers: {
-//             "Content-Type": "application/json",
-//           },
-//           body: JSON.stringify({ likes: initiatief.likes }),
-//         });
-//       } catch (error) {
-//         console.error(
-//           "Fout bij het patchen van het aantal likes in de Directus API:",
-//           error
-//         );
-//         // Hier kun je een fout behandelen voor de user.
-//       }
-//       //Laat het weten als het liken succesvol is.
-//       console.log("Aantal likes bijgewerkt voor service:", initiatief); // Log het bijgewerkte service object
-//     } else {
-//       // Laat het weten als de service niet gevonden is.
-//       console.log("Service niet gevonden voor ID:", like_id);
-//       response.status(404).send("Service niet gevonden");
-//     }
-//   });
+// POST-route voor het liken van een service
+app.post("/like", async function (request, response) {
+    const initiatiefId = request.body.initiatiefId;
+    const likes = request.body.likes;
+
+    console.log("Like verzoek voor service met ID:", initiatiefId);
+    console.log("Total likes:", likes);
+    
+    if (initiatiefId) {
+        // Update het aantal likes in de Directus API
+
+        fetchJson(`${apiUrl}/${initiatiefId}`, {
+            method: "PATCH",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ likes: likes })
+        }).then((data) => {
+            console.log(data);
+            console.log("Aantal likes bijgewerkt voor service:", initiatiefId, likes);
+        }).catch((error) => {
+            console.error("Error patching likes in Directus API:", error);
+        });
+
+    
+    } else {
+      // Laat het weten als de service niet gevonden is.
+      console.log("Service niet gevonden voor ID:", initiatiefId);
+      response.status(404).send("Service niet gevonden");
+    }
+  });
+
 
 app.set('port', process.env.PORT || 8009)
 

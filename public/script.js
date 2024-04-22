@@ -37,31 +37,32 @@ document.addEventListener('DOMContentLoaded', function() {
     likeCheckboxes.forEach(function(checkbox) {
       checkbox.addEventListener('change', async function() {
         const serviceId = this.value;
-        const likeCount = this.parentElement.querySelector('span');
-  
+        const form = this.parentElement.parentElement;
+        const likeText = this.parentElement.querySelector('span');
+        let likeCount = parseInt(likeText.textContent);
+
+        
+
         // Als de checkbox checked is, up de like count, anders eentje eraf halen!
         if (this.checked) {
-          likeCount.textContent = parseInt(likeCount.textContent) + 1;
+            likeCount = likeCount + 1;  
+            likeText.textContent = likeCount;
         } else {
-          likeCount.textContent = parseInt(likeCount.textContent) - 1;
+            likeCount = likeCount - 1;
+            likeText.textContent = likeCount;
         }
-  
-        // Update de Like count in de Directus API
-        try {
-          const response = await fetch('/like', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ like_id: serviceId })
-          });
-          if (!response.ok) {
-            throw new Error('Failed to update likes count in Directus API');
-          }
-        } catch (error) {
-          console.error('Error updating likes count:', error);
-          // Hier kun je de user een error message geven.
-        }
+
+        // // Update de Like count in de Directus API
+        fetch(form.action, {
+            method: form.method,
+            body: new URLSearchParams({'initiatiefId': serviceId, 'likes': likeCount})
+        }).then(function(response) {
+            return response.text()
+        }).then(function(responseHTML) {
+            alert("het is gepost")
+            // document.querySelector(".liked-playlists > div").innerHTML = responseHTML
+            console.log(responseHTML)
+        });
       });
     });
   });

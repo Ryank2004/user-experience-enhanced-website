@@ -21,7 +21,7 @@
                 <li class="initiatief-kaart">
                     
                     <div class="initiatief-image-container">
-                        <form>
+                        <form action="/like" method="POST">
                             <label class="heart-checkbox" for="<%= initiatief.id %>-like">
                             <input type="checkbox" name="like" id="<%= initiatief.id %>-like" value="<%= initiatief.id %>">
                             <i class="fas fa-heart"></i>
@@ -34,7 +34,9 @@
                         </div>
                     <div class="kaart-content">
                         <h3 class="h3"> <%= initiatief.title %> </h3>
-                            <p>Waar: <%= initiatief.neighbourhood.replace(/_/g, " ").split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ') %></p>
+                            <% if (initiatief.neighbourhood) { %>
+                                <p>Waar: <%= initiatief.neighbourhood.replace(/_/g, " ").split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ') %></p>
+                            <% }%>
                             <p> Wanneer: <%= initiatief.start_date %> </p>
                     </div>
                 <a href="/detail/<%= initiatief.id %>" class="lees-meer">Lees meer ></a>
