@@ -41,8 +41,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const likeText = this.parentElement.querySelector('span');
         let likeCount = parseInt(likeText.textContent);
 
-        
-
         // Als de checkbox checked is, up de like count, anders eentje eraf halen!
         if (this.checked) {
             likeCount = likeCount + 1;  
@@ -59,7 +57,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }).then(function(response) {
             return response.text()
         }).then(function(responseHTML) {
-            alert("het is gepost")
             // document.querySelector(".liked-playlists > div").innerHTML = responseHTML
             console.log(responseHTML)
         });
