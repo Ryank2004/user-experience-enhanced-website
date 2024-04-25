@@ -13,63 +13,38 @@ app.set('views', './views')
 app.use(express.static('public'))
 app.use(express.urlencoded({extended: true}))
 
-// let initiatievenData = await fetchData();
-
-
-// const fetchFromApi = async (endpoint) => {
-//     const response = await fetchJson(apiUrl + endpoint);
-//     return response.data;
-//   };
-
-// const fetchData = async () => {
- //     const allDataAdvertisements = await fetchFromApi("/items/dh_services");
-//     return allDataAdvertisements;
-//   };
-
-// let initiatievenData = await fetchData();
-
+// GET ROUTES
 app.get('/', function (request, response) {
-    // fetchJson("https://fdnd-agency.directus.app/admin/content/dh_services").then((apiData) => {
-
-    response.render('index')
-    })
-// })
-// app.get('/detail/:id', function(request, response) {
-//     fetchJson('https://fdnd-agency.directus.app/items/dh_services?filter={"id": '+ request.params.id +'}').then((initiatiefDetail) => {
-//       response.render('detail', {
-//         initiatief: initiatiefDetail.data[0]
-//       })
-//     })
-//   })
-// app.get('/initiatieven/:id', function (request, response){
-//     fetchJson('https://fdnd-agency.directus.app/items/dh_services?filter={"id":' + request.params.id + '}').then((initiatievenData) => {
-
-//     response.render('initiatieven', {initiatieven: initiatievenData.data[0]})
-//     })
-
-// })
-
+    response.render('index', {actief: 'Home'});
+});
 
 app.get('/initiatieven', function (request, response){
     fetchJson('https://fdnd-agency.directus.app/items/dh_services').then((initiatievenData) => {
-
-    response.render('initiatieven', {initiatieven: initiatievenData.data})
-  })
-  
-})
+        response.render('initiatieven', {
+            initiatieven: initiatievenData.data,
+            actief: 'Initiatieven'
+        });
+    });
+});
 
 app.get('/detail/:id', function (request, response){
-  fetchJson(apiUrl + '/' + request.params.id).then((initiatiefDetail) => {
-
-    response.render('detail', {initiatief: initiatiefDetail.data})
-    })
-})
+    fetchJson(apiUrl + '/' + request.params.id).then((initiatiefDetail) => {
+        response.render('detail', {
+            initiatief: initiatiefDetail.data,
+            actief: 'Initiatieven'
+        });
+    });
+});
 
 app.get('/aanmelden', function (request, response){
-  fetchJson(apiUrl).then((initiatievenData) => {
-    response.render('aanmelden', {initiatief: initiatievenData.data})
-  })
-})
+    fetchJson(apiUrl).then((initiatievenData) => {
+        response.render('aanmelden', {
+            initiatief: initiatievenData.data,
+            actief: 'Aanmelden'
+        });
+    });
+});
+
 
 // POST-route voor het liken van een service
 app.post("/like", async function (request, response) {

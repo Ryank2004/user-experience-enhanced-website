@@ -15,8 +15,8 @@
     <nav class="navigatiebalk">
         <a class="h2" href="/">BuurtBond</a>
             <ul class="menu-lijst">
-                <li><a class="lijst-item active-state" href="/">Home</a></li>
-                <li><a class="lijst-item" href="/initiatieven">Initiatieven</a></li>
+                <li><a class="lijst-item <%= actief === 'Home' ? 'active-state' : '' %>" href="/">Home</a></li>
+                <li><a class="lijst-item <%= actief === 'Initiatieven' ? 'active-state' : '' %>" href="/initiatieven">Initiatieven</a></li>
                 <li><a class="lijst-item" href="/over ons">Over Ons</a></li>
                 <li><a class="lijst-item" href="/faq">FAQ</a></li>
                 <li><a class="lijst-item" href="/contact">Contact</a></li>    
@@ -26,7 +26,7 @@
                 <div class="bar"></div>
                 <div class="bar"></div>
             </div>
-            <a  href="/aanmelden" class="lijst-button"><span>Aanmelden</span></a>
+            <a  href="/aanmelden" class="lijst-button <%= actief === 'Aanmelden' ? 'active-state' : '' %>"><span>Aanmelden</span></a>
     </nav>
     
     <div class="header-wave">
